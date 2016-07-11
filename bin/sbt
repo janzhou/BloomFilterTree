@@ -1,0 +1,18 @@
+#!/bin/bash
+
+get_sbt(){
+  [ ! -d 'target' ] && mkdir target
+  [ ! -f 'target/sbt' ] && cd target \
+  && wget https://raw.githubusercontent.com/paulp/sbt-extras/master/sbt \
+  && chmod 0755 sbt && cd ..
+}
+
+sbt(){
+  get_sbt
+  # [ -f jvm-opts ] && cmd="target/sbt -jvm-opts jvm-opts $*" || cmd="target/sbt -jvm-opts bin/jvm-opts $*"
+  cmd="target/sbt $*"
+  echo $cmd
+  $cmd
+}
+
+sbt $*
