@@ -1,9 +1,8 @@
-package org.janzhou
+package org.janzhou.hashing
 
-import breeze.util.BloomFilter
 import scala.reflect.ClassTag
 
-class BloomFilterTree[T:ClassTag](
+class BloomFilterTreeOld[T:ClassTag](
   val false_positive_rate:Double = 0.001
 ) {
   private var array = Iterable[(BloomFilter[T], Iterable[T])]()
